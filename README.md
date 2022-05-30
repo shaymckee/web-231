@@ -1,2 +1,4 @@
-# web-231
-Repository for Web 231-316H
+# WEB 231 Enterprise JavaScript I
+## Contributors
+  * Richard Krasso
+  * Shay McKee
