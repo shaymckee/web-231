@@ -1,0 +1,105 @@
+<!--
+    Title: Assignment 2.3 – Values and Variables
+    Author: Shay McKee
+    Date: 6/5/2022
+    Description: html page for assignment 2.3
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../site.css"/>  
+    <link rel="stylesheet" type="text/css" href="mckee-payroll.css"/>   
+    <title>Payroll</title>
+</head>
+<body>
+    <div id="container">
+        <h1 id="payroll-header">Payroll System</h1>
+        <h3>Employee Record 1</h3>
+        <div class="record">
+            <ul>
+                <li id="txtFirstNameLudwig"></li>
+                <li id="txtLastNameBeethoven"></li>
+                <li id="txtAddressLudwig"></li>
+                <li id="txtHireDateLudwig"></li>
+                <li id="txtPayRateLudwig"></li>
+            </ul>
+        </div>
+        <h3>Employee Record 2</h3>
+        <div class="record">
+            <ul>
+                <li id="txtFirstNameJohann"></li>
+                <li id="txtLastNameBach"></li>
+                <li id="txtAddressJohann"></li>
+                <li id="txtHireDateJohann"></li>
+                <li id="txtPayRateJohann"></li>
+            </ul>
+        </div>
+        <h3>Employee Record 3</h3>
+        <div class="record">
+            <ul>
+                <li id="txtFirstNameWolfgang"></li>
+                <li id="txtLastNameMozart"></li>
+                <li id="txtAddressWolfgang"></li>
+                <li id="txtHireDateWolfgang"></li>
+                <li id="txtPayRateWolfgang"></li>
+            </ul>
+        </div>
+        
+        <br>
+        <a href="../index.html">Return</a>
+
+    </div>   
+
+    <script>
+         
+        let firstNameRec1 = "Ludwig";
+        let lastNameRec1 = "Beethoven";
+        let addressRec1 = "505 Main Street";
+        let hireDateRec1 = "12/9/2020";
+        let payRateRec1 = 18.95467;
+
+        let firstNameRec2 = "Johann";
+        let lastNameRec2 = "Bach";
+        let addressRec2 = "512 Main Street";
+        let hireDateRec2 = "12/10/2020";
+        let payRateRec2 = 25.54356;
+
+        let firstNameRec3 = "Wolfgang";
+        let lastNameRec3 = "Mozart";
+        let addressRec3 = "600 Main Street";
+        let hireDateRec3 = "12/11/2020";
+        let payRateRec3 = 50.10354;
+
+        //First Name
+        document.getElementById("txtFirstNameLudwig").innerHTML = firstNameRec1;
+        document.getElementById("txtFirstNameJohann").innerHTML = firstNameRec2;
+        document.getElementById("txtFirstNameWolfgang").innerHTML = firstNameRec3;
+
+        //Last Name
+        document.getElementById("txtLastNameBeethoven").innerHTML = lastNameRec1;
+        document.getElementById("txtLastNameBach").innerHTML = lastNameRec2;
+        document.getElementById("txtLastNameMozart").innerHTML = lastNameRec3;
+
+        //Address
+        document.getElementById("txtAddressLudwig").innerHTML = addressRec1;
+        document.getElementById("txtAddressJohann").innerHTML = addressRec2;
+        document.getElementById("txtAddressWolfgang").innerHTML = addressRec3;
+
+        //Hire Date
+        document.getElementById("txtHireDateLudwig").innerHTML = new Date(hireDateRec1).toLocaleDateString("en-US");
+        document.getElementById("txtHireDateJohann").innerHTML = new Date(hireDateRec2).toLocaleDateString("en-US");
+        document.getElementById("txtHireDateWolfgang").innerHTML = new Date(hireDateRec3).toLocaleDateString("en-US");
+
+        //Pay Rate
+        document.getElementById("txtPayRateLudwig").innerHTML = payRateRec1.toFixed(1);
+        document.getElementById("txtPayRateJohann").innerHTML = payRateRec2.toFixed(1);
+        document.getElementById("txtPayRateWolfgang").innerHTML = payRateRec3.toFixed(1);
+
+    </script>
+    
+</body>
+</html>
