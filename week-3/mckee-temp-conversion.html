@@ -1,0 +1,55 @@
+<!--
+    Title: mckee-temp-conversion.html
+    Author: Shay McKee
+    Date: 6/12/2022
+    Description: html page for assignment 3.2
+-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./mckee-temp-conversion.css">   
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>Temp Conversion</title>
+</head>
+<body>
+    <!-- Container for the input area-->
+    <div id="container">
+        <h1 class="app-header">Welcome to the Temperature Conversion App!</h1>
+        <div class="card">
+            <div class="card-title">Fahrenheit to Celsius Converter</div>
+            <div class="card-content">
+                <div class="form">
+                    <div class="form-field">
+                        <label for="txtFahrenheit">Fahrenheit value:</label>
+                        <input type="text" class="input" id="txtFahrenheit" name="txtFahrenheit"/>
+                    </div>
+                    <div class="form-field">
+                        <button class="btn-primary full-width" id="btnSubmit">Convert Temperature</button>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+        <br><br>        
+        <div id="form-results">
+            <div class="card">
+                <div class = "card-title">Conversion Results</div>
+                <div class = "card-content" id = "results"></div>
+            </div>                     
+        </div>
+        <br><br>
+        <a href="../index.html">Return</a>
+    </div>
+    <script>
+        document.getElementById("btnSubmit").onclick = function() {
+            let fahrenheit = document.getElementById("txtFahrenheit").value;
+            document.getElementById("results").innerHTML = ((parseFloat(fahrenheit)-32) /1.8).toFixed(2);
+        }
+    </script>
+</body>
+</html>

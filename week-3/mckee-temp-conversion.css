@@ -1,0 +1,12 @@
+/*
+    Assignment 3.2 styles
+*/
+
+
+/* for font family */
+body {
+    margin: 0;
+    font-family: 'Oswald', Verdana, Arial, sans-serif;
+    text-align: center;
+    font-size: 28px;
+}
