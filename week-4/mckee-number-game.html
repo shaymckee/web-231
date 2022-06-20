@@ -2,7 +2,10 @@
     Title: mckee-number-game.html
     Author: Shay McKee
     Date: June 19 2022
-    Description: This is the guess the number game for assignment 4.2.
+    Description: Guess the number game for assignment 4.2. to demonstrate the understanding of the if..else if..else statements through 
+                 a number guessing game.
+    Sources: 
+            * Code from Professor Krasso's course instructions.
 -->
 
 <!DOCTYPE html>
@@ -35,7 +38,8 @@
                 </div>
             </div>
         </div>
-        <div id="form-results-example">       
+        <div id="form-results-example"> 
+                            <!--Card displaying comparison result-->      
             <div class="card">
                 <div class="card-title">Results</div>
                 <div class="card-content" id="results"></div>
@@ -64,6 +68,7 @@
                     document.getElementById("results").innerHTML = `The number is greater than ${myNumber}.`;
                 } else if (myNumber > rndNum) {
                     document.getElementById("results").innerHTML = `The number is less than ${myNumber}.`;
+                            // Connects the value of the resultText variable to the card displaying results.
                 } else {
                     document.getElementById("results").innerHTML = `Congratulations!  You picked the correct number!`;
                 }
