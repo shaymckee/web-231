@@ -1,0 +1,11 @@
+/*
+    Title: mckee-sequence-game.css
+    Author: Shay McKee
+    Date: 6/26/2022
+    Description:  This is the CSS file for additional styling on the mckeesequence-game.html for assignment 5.2.
+*/
+
+#results {
+    text-align: center;
+    font-size: 28px;
+}

@@ -1,0 +1,94 @@
+<!--
+    Title: mckee-sequence-game.html
+    Author: Shay McKee
+    Date: 6/26/2022
+    Description: The html file for the sequence game, assignment 5.2.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="mckee-sequence-game.css"/>
+    <link rel="stylesheet" type="text/css" href="../global.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <title>Sequence Game</title>
+</head>
+<body>
+    <!--The main div container for the program.  All the other html code will be inside this container.-->
+    <div id="container">
+        <h1 class="app-header">Welcome to the sequence game!</h1>
+        <div id="form-example">                
+            <div class="card">
+                <div class="card-title">Sequence Selection Form</div>
+                <div class="card-content">
+                    <div class="form">
+                        <div class="form-field">
+                            <label for="sequence">Choose a number sequence</label>
+                            <select id="sequence" class="drop-down-menu">
+                                <option value="select">--Select--</option>
+                                <option value="fibonacci">Fibonacci Sequence</option>
+                                <option value="even">Even Numbers</option>
+                                <option value="odd">Odd Numbers</option>
+                            </select>
+                        </div>                        
+                        <div class="form-field">
+                            <button class="btn btn-primary full-width" id="btnDisplaySequence">Display Sequence</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="form-results-example">          <!--This is the container for the results-->
+            <div class="card">
+                <div class="card-title">Sequence Results</div>
+                <div class="card-content" id="results"></div>
+            </div>
+        </div>
+        <br><br>
+        <a class="return-home" href="../index.html">Return</a>
+    </div>  
+    <script>
+        document.getElementById("btnDisplaySequence").onclick = function() {
+            let num1 = 0;
+            let num2 = 1;
+            let next = 0;                       
+            const choice = document.getElementById("sequence").value;  
+            let fibonacciSequenceText = "";  
+            let evenResults = "";
+            let oddResults = "";        
+            //Definition of fibonacci sequence, even, and odd number sequence, and append of results html.  Each sequence uses a different loop, per the assignment, and a message if the user selects something in error.
+            if(choice === "fibonacci") {                
+                while (num1 < 40){
+                    fibonacciSequenceText += num1 + ", ";                    
+                    next = num1 + num2;
+                    num1 = num2;
+                    num2 = next;                  
+                }
+                document.getElementById("results").innerHTML=fibonacciSequenceText.slice(0, -2);                
+            } else if (choice === "even") {
+                let i = 2; 
+                do {
+                    if(i % 2 == 0){
+                        num1 = i;                         
+                        i++;
+                        evenResults += num1 + ", ";                                                                      
+                    } document.getElementById("results").innerHTML=evenResults.slice(0,-2);                                
+                } while(++i <= 20);
+            } else if (choice === "odd") {
+                for(let i = 1; i <= 20; i++){
+                    if (i % 2 == 1) {
+                        num1 = i;                        
+                        i++;
+                        oddResults += num1 + ", ";
+                    }                
+               } document.getElementById("results").innerHTML=oddResults.slice(0, -2);        
+            } else {
+                alert("Invalid selection, please try again.");
+            }
+        }
+    </script>  
+</body>
+</html>
