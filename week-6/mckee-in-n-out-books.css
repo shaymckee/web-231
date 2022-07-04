@@ -1,0 +1,58 @@
+/*
+    Title: mckee-in-n-out-books.css
+    Author: Shay McKee
+    Date: 7/3/2022
+    Description: The css style guide for the in-n-out books, assignment 6.2.
+        Sources: 
+            * Code from Professor Krasso's course instructions.
+*/
+body {
+    font-family: "Oswald",
+        Verdana,
+        Arial,
+        sans-serif;
+}
+
+/* Styling for the div with all the form elements*/
+#container {
+    padding: 10px;
+    width: 50%;
+    margin: auto;
+}
+
+/* Styling h1 element for app's title*/
+.app-header {
+    text-align: center;
+}
+
+/* Styling for form elements and submit button*/
+#card-content {
+    text-align: center;
+    font-size: 28px;
+}
+
+/* Setting table width, margin and collapsing border */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+/* Styling for table header*/
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4F3674;
+    color: white;
+}
+/* Styling the border of table rows and data*/
+td, th {
+    border: 1px solid #ddd;
+}
+/* Changing table rows background color, text color and cursor style*/
+tr:hover {
+    background-color: #D6A800;
+    color: #4F3674;
+    cursor: pointer;
+}

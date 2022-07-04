@@ -1,0 +1,190 @@
+<!--
+    Title: mckee-in-n-out-books.html
+    Author: Shay McKee
+    Date: 7/3/2022
+    Description: The html file for the in-n-out books, assignment 6.2.
+        Sources: 
+            * Code from Professor Krasso's course instructions.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEB 231 – Enterprise JavaScript I</title>
+    <link href="../global.css" type="text/css" rel="stylesheet" />
+    <link href="mckee-in-n-out-books.css" type="text/css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inria+Sans&family=Inter:wght@500;900&family=Oswald:wght@300;400;500;700&family=Ultra&display=swap"
+        rel="stylesheet">
+</head>
+<body>
+    <!--A container for all the cards-->
+    <div id="container">
+        <h1 class="app-header">Welcome to In-N-Out-Books</h1>
+        <!--Card for the input form-->
+        <div class="card">
+            <div class="card-title">My Favorites</div>
+            <div class="card-content">
+                <div class="form">
+                    <div class="form-field">
+                        <label for="txtListing">Choose a listing:</label>
+                        <!--Drop down menu for the user to select a number sequence option-->
+                        <select name="txtListing" class="drop-down-menu" id="favoriteList">
+                            <option value="select">--Select--</option>
+                            <option value="books">Top 3 Favorite Books</option>
+                            <option value="authors">Top 3 Favorite Authors</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <!--Button to trigger the comparison-->
+                        <button type="submit" class="btn btn-primary full-width" id="btnDisplayListing">Display
+                            Listing</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="form-result">
+            <div class="card">
+                <!--Card displaying comparison result-->
+                <div class="card" id="favorite-books">
+                    <div class="card-title">Top 3 Favorite Books</div>
+                    <table>
+                        <tr>
+                            <th>ISBN</th>
+                            <th>Title</th>
+                            <th>Pages</th>
+                        </tr>
+                        <tr>
+                            <td id="txtThePowerOfHabitISBN"></td>
+                            <td id="txtThePowerOfHabitTitle"></td>
+                            <td id="txtThePowerOfHabitPages"></td>
+                        </tr>
+                        <tr>
+                            <td id="txtTwilightISBN"></td>
+                            <td id="txtTwilightTitle"></td>
+                            <td id="txtTwilightPages"></td>
+                        </tr>
+                        <tr>
+                            <td id="txtTheLostApothecaryISBN"></td>
+                            <td id="txtTheLostApothecaryTitle"></td>
+                            <td id="txtTheLostApothecaryPages"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="card" id="favorite-authors">
+                    <div class="card-title">Top 3 Favorite Authors</div>
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Genre</th>
+                        </tr>
+                        <tr>
+                            <td id="txtDuhiggName"></td>
+                            <td id="txtDuhiggGenre"></td>
+                        </tr>
+                        <tr>
+                            <td id="txtMeyerName"></td>
+                            <td id="txtMeyerGenre"></td>
+                        </tr>
+                        <tr>
+                            <td id="txtPennerName"></td>
+                            <td id="txtPennerGenre"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <script>
+
+                // Defining and creating favorite books objects
+                let favoriteBook1 = {
+                    isbn: "978-0525567141",
+                    title: "The Power of Habit",
+                    pages: "371"
+                };
+                let favoriteBook2 = {
+                    isbn: "978-0316033411",
+                    title: "Twilight",
+                    pages: "379"
+                };
+                let favoriteBook3 = {
+                    isbn: "978-2490746767",
+                    title: "The Lost Apothecary",
+                    pages: "306"
+                };
+
+                // Defining and creating favorite authors objects
+                let favoriteAuthor1 = {
+                    name: "Charles Duhigg",
+                    genre: "Self-improvement"
+                };
+                let favoriteAuthor2 = {
+                    name: "Stephenie Meyer",
+                    genre: "Fantasy"
+                };
+                let favoriteAuthor3 = {
+                    name: "Sarah Penner",
+                    genre: "Fantasy"
+                };
+
+                // Assigning favorite-books and favorite-authors divs to books and authors variables
+                let books = document.getElementById("favorite-books");
+                let authors= document.getElementById("favorite-authors");
+
+
+                books.style.display = "none";
+                authors.style.display = "none";
+                
+                // Binding favorite books object literals to HTML Table
+                    document.getElementById("txtThePowerOfHabitISBN").innerHTML = favoriteBook1.isbn;
+                    document.getElementById("txtThePowerOfHabitTitle").innerHTML = favoriteBook1.title;
+                    document.getElementById("txtThePowerOfHabitPages").innerHTML = favoriteBook1.pages;
+                    document.getElementById("txtTwilightISBN").innerHTML = favoriteBook2.isbn;
+                    document.getElementById("txtTwilightTitle").innerHTML = favoriteBook2.title;
+                    document.getElementById("txtTwilightPages").innerHTML = favoriteBook2.pages;
+                    document.getElementById("txtTheLostApothecaryISBN").innerHTML = favoriteBook3.isbn;
+                    document.getElementById("txtTheLostApothecaryTitle").innerHTML = favoriteBook3.title;
+                    document.getElementById("txtTheLostApothecaryPages").innerHTML = favoriteBook3.pages;
+
+                    // Binding favorite authors object literals to HTML Table
+                    document.getElementById("txtDuhiggName").innerHTML = favoriteAuthor1.name;
+                    document.getElementById("txtDuhiggGenre").innerHTML = favoriteAuthor1.genre;
+                    document.getElementById("txtMeyerName").innerHTML = favoriteAuthor2.name;
+                    document.getElementById("txtMeyerGenre").innerHTML = favoriteAuthor2.genre;
+                    document.getElementById("txtPennerName").innerHTML = favoriteAuthor3.name;
+                    document.getElementById("txtPennerGenre").innerHTML = favoriteAuthor3.genre;
+
+
+
+                document.getElementById("btnDisplayListing").onclick = function displayFavoriteListing() {
+                    let choice = document.getElementById("favoriteList").value;
+            
+
+                    
+
+                    if (choice === "books") {
+                        authors.style.display = "none";
+                        books.style.display = "block";
+                    } else if (choice === "authors") {
+                        authors.style.display = "block";
+                        books.style.display = "none";
+                    } else {
+                        authors.style.display = "none";
+                        books.style.display = "none";
+                    }
+                    
+                }
+            </script>
+        </div>
+
+        <!--Link to web-231 index.html, the course landing page-->
+        <a class="return-home" href="../index.html">Return</a>
+
+    </div>
+
+
+
+    
+</body>
+</html>
