@@ -1,0 +1,149 @@
+<!--
+  Title: Assignment 8.2 - Alphabet Game
+  Author: Shay McKee
+  Date: 07/17/2022
+  Description: HTML for web-231 Assignment 8.2 Alphabet Game
+            Sources: 
+            * Code from Professor Krasso's course instructions.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width,
+    , initial-scale=1.0"
+    />
+    <!-- External CSS stylesheet -->
+    <link rel="stylesheet" href="mckee-alphabet-game.css" />
+    <link rel="stylesheet" href="../global.css" />
+    <!-- Google fonts for Oswald -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>WEB 231 - Enterprise Javascript I</title>
+  </head>
+  <body>
+    <div id="container">
+      <h1 class="app-header">Welcome to the Alphabet Game!</h1>
+      <!-- First card contains a input form for enter numbers. -->
+      <div class="card">
+        <div class="card-container">
+          <h2 class="card-title">Alphabet Number Form</h2>
+          <div class="form">
+            <label for="txtPosition">Alphabet Letter Position </label>
+             <input
+            id="txtPosition"
+            type="text"
+            name="txtPosition"
+            class="input"
+          />
+            <div class="form-field">
+              <button
+              type="submit"
+              class="btn"
+              id="btnFindLetter"
+            >
+              Find Letter
+            </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Put space between two cards by div -->
+      <div class="break"></div>
+      <!-- Second card for displaying a string with Alphabet -->
+      <div id="card">
+        <div id="javazon-results" class="card"></div>
+      </div>
+      <div class="break"></div>
+      <!-- Return link back to the WEB-231 landing page -->
+      <a class="return-home" href="../index.html">Return</a>
+      <!-- Third card for displaying a string with the content of letter's position -->
+      <div id="form-results">
+        <div class="card">
+          <div class="card-title">Letters in the Alphabet</div>
+          <div class="card-content" id="alphabet-output"></div>
+        </div>
+      </div>
+
+      <!-- Begin Form Results Container -->
+      <div id="form-results">
+        <div class="card">
+          <div class="card-title">Results</div>
+          <div class="card-content" id="results-output"></div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- Begin alphabetOutput card -->
+     
+
+    <script>
+      // Register an onclick event for ID btnFindLetter.
+      window.onload = onloadFunc;
+      function onloadFunc() {
+        //alert('onload');
+        let btnEl = document.getElementById("btnFindLetter");
+        btnEl.addEventListener("click", btnFindLetter);
+      }
+
+     // Creates the alphabet array.
+      const alphabet = [ "A", "B", "C", "D", 
+                            "E", "F", "G", "H", 
+                            "I", "J", "K", "L", 
+                            "M", "N", "O", "P", 
+                            "Q", "R", "S", "T", 
+                            "U", "V", "W", "X", 
+                            "Y", "Z" ];
+            console.log(alphabet);
+
+      // const alphabet = [..."ABCDEFGJIJKLMNOPQRSTUVWXYZ"]; // Array spread
+      //    console.log(alphabet);
+      let alphabetOutput = "";
+
+       // The for/in loop builds a string from the alphabet array and display the string in the div with id alphabet-output.
+      for ( let letterAlphabet in alphabet ) {
+        console.log(letterAlphabet)
+        alphabetOutput += alphabet[letterAlphabet]+ ", ";
+        
+      }
+       document.getElementById("alphabet-output").innerHTML = alphabetOutput.slice(0, -2);
+       
+      // use for of loop to get same solution 
+      // for ( let letterAlphabet of alphabet ) {
+      //   console.log(letterAlphabet)
+      //   alphabetOutput += letterAlphabet + ", ";
+        
+      // }
+
+     // onclick function to find the letter position and display the result in the dive with id results-output.
+      function btnFindLetter() {
+          // variable pos to declare the user inputted number.
+       let  pos = document.getElementById("txtPosition").value; 
+         console.log(pos);
+         console.log(alphabet[pos]);
+         pos = parseInt(pos);
+        console.log(pos);
+        let resultEl = document.getElementById('results-output');
+        console.log(pos);
+        // set the letter position from index 1, expected output: A is at position 1 in the alphabet.
+        let letterIndex = alphabet[pos - 1];
+        console.log(pos);
+        if (letterIndex == undefined) {
+          resultEl.innerHTML = "There are not " + pos + " letters in the alphabet";
+        } else {
+          resultEl.innerHTML = letterIndex + " is at position " + pos + " in the alphabet.";
+
+        }
+      }
+
+     
+    </script>
+  </body>
+</html>
