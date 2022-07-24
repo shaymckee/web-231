@@ -1,0 +1,148 @@
+/* 
+    Title: mckee-card-game.css
+    Author: Shay McKee
+    Date: 07/24/2022
+    Description: styling for web-231 Assignment 9.2 - Final: card game
+*/
+
+/* use google fonts Oswald to style body text */
+body {
+    font-family: "Oswald", Verdana, Arial, sans-serif;
+    
+}
+
+/* center the header text */
+.app-header {
+    text-align: center;
+    font-weight: 400;
+}
+
+/* give padding to the container */
+#container {
+    padding: 10px;
+}
+
+/* styling two cards and center them by margin */
+.card {
+    /* add shadows to cards */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+     margin-right: auto;
+    margin-left: auto;
+    width: 80%;
+}
+
+/* give paddings and margins to center the card containers */
+.card-container {
+    padding: 2px 16px;
+    margin-right:20px;
+    margin-left:20px;
+
+}
+
+/* same margins as card-container */
+.break {
+margin-top:20px;
+margin-bottom: 20px;
+
+}
+
+/* styling card title */
+.card-title {
+ text-align: center;
+ margin-top: 5px;
+ margin-bottom: 5px;
+ color:#4F3674;
+ font-weight: 400;
+ /* font-size: x-large; */
+ font-size: 28px;
+
+}
+
+.card-shuffled{
+    padding-bottom: 20px;
+}
+
+/* give space under the bottom of form */
+.form {
+margin-bottom:20px;
+}
+
+/* styling button */
+.btn {
+margin-top:5px;
+margin-bottom:5px;
+width: 100%;
+padding-top:5px;
+padding-bottom:5px;
+font-size: 13px;
+background-color: #4F3674;
+color:white;
+text-align: center;
+
+}
+
+/* use margin left to remove the return home link to under the second card */
+.return-home {
+margin-left: 120px;
+}
+
+/* display the conversion result in the center of the card */
+#card-content {
+
+
+}
+
+/* styling table */
+table {
+  border-collapse: collapse;
+  width: 100%;
+
+}
+
+th {
+  padding: 8px 5px;
+  text-align: left;
+  background-color: #4f3674;
+  color: white;
+}
+
+td {
+  padding: 5px;
+}
+
+td, th {
+  border: 1px solid #ddd;
+}
+
+tr:hover {
+  background-color: #d6a800;
+  color: #4f3674;
+  cursor: pointer;
+}
+
+/* styling for alphabet output */
+#alphabet-output {
+  text-align: center;
+  font-size: 28px;
+  padding-right:20px;
+  padding-left:20px;
+}
+
+/* styling for results output */
+#results-output {
+  text-align: center;
+  font-size: 28px;
+  padding-right:20px;
+  padding-left:20px;
+
+}
+
+
+/* Use grid to design the layout of cards output */
+#player-card-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 5px 1px;
+ 
+}

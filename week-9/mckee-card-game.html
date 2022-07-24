@@ -1,0 +1,207 @@
+<!--
+  Title: Assignment 9.2 - Final: card game
+  Author: Shay McKee
+  Date: 07/24/2022
+  Description: index.html for web-231 Assignment 9.2 - Final: card game
+              Sources: 
+            * Code from Professor Krasso's course instructions.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width,
+    , initial-scale=1.0"
+    />
+    <!-- external CSS stylesheet -->
+    <link rel="stylesheet" href="mckee-card-game.css" />
+    <link rel="stylesheet" href="../global.css" />
+    <!-- Google fonts for Oswald -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Link to Material Design Icons -->
+    <!-- https://cdn.jsdelivr.net/npm/@mdi/font@5.4.55/ -->
+    <!-- https://materialdesignicons.com/ -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css"
+      rel="stylesheet"
+    />
+    <title>WEB 231 - Enterprise Javascript I</title>
+  </head>
+  <body>
+    <div id="container">
+      <h1 class="app-header">Welcome to the Card Game!</h1>
+      <!-- The first card contains a button to trigger the onclick function. -->
+      <div class="card">
+        <div class="card-container">
+          <h2 class="card-title">Card Dealer</h2>
+          <button type="submit" class="btn full-width" id="btnDealCards">
+            Deal Cards
+          </button>
+        </div>
+      </div>
+
+      <!-- Give space between two cards by div -->
+      <div class="break"></div>
+
+      <!-- Return link back to the WEB-231 landing page -->
+      <a class="return-home" href="../index.html">Return</a>
+
+      <div class="break"></div>
+      <!-- Shuffled Cards Container -->
+      <div id="form-results">
+        <div class="card">
+          <div
+            class="card-content"
+            style="font-size: 28px; padding-bottom: 25px"
+          >
+            <div class="card-title card-shuffled">Shuffled Cards</div>
+            <div id="player-card-container"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Build Card template with parameters for face and suit.
+      class Card {
+        constructor(face, suit) {
+          this.face = face;
+          this.suit = suit;
+        }
+      }
+
+      // Build Dealer template with call the getDeckOfCards function.
+      class Dealer {
+        constructor() {
+          this.getDeckOfCards();
+        }
+        // Variable CARD_COUNT declares a deck with 52 counts.
+        CARD_COUNT = 52;
+        cards = [];
+        // Set up this.faces[] array
+        faces = [
+          "A",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "J",
+          "Q",
+          "K",
+        ];
+        // Set up this.suits[] array
+        suits = ["Hearts", "Diamonds", "Clubs", "Spades"];
+
+        getDeckOfCards() {
+          // Creates the this.cards[] array
+          for (let count = 0; count < this.CARD_COUNT; count++) {
+            // Create new Card object
+            this.cards[count] = new Card(
+              this.faces[count % 13],
+              this.suits[Math.floor(count / 13)]
+            );
+          }
+        }
+
+        shuffle() {
+          // For loop with 52 iterations (use the CARD_COUNT variable for this)
+          // During each iteration, generate a random number (see the below random card expression) between 0 and 52 and assign it to a variable named secondCard. Find the first card in the cards array by using the for loop’s iteration variable (I named mine firstCard) and assign it to a variable named tempCard. Reorder the cards array by setting the current card to the secondCard and the second card to the tempCard.
+          for (let firstCard = 0; firstCard < this.CARD_COUNT; firstCard++) {
+            let secondCard = Math.floor(Math.random() * this.CARD_COUNT);
+            let tempCard = this.cards[firstCard];
+            this.cards[firstCard] = this.cards[secondCard];
+            this.cards[secondCard] = tempCard;
+          }
+        }
+      }
+
+      function buildPlayingCard(card, suitIcon, faceColor, suitColor) {
+        // Use Template literals to display string.
+        return `
+           <div class="card style="width:100%;">
+          <div class="card-title" style="text-align:left; font-size:20px;padding-left:10px;padding-right:200px;color:${faceColor}">${card.face}</div>
+          <div class="card-content player-card" style="font-size:28px; padding-bottom:25px; text-align:center;">
+              <span class="${suitIcon}" style="color:${suitColor}"></span>
+              </div>
+            </div>
+            </div>
+           `;
+      }
+
+      // Use addEventListener to trigger the clickForCards function.
+      let btnEl = document.getElementById("btnDealCards");
+      btnEl.addEventListener("click", clickForCards);
+
+      function clickForCards() {
+        //alert("hello");
+        let dealer = new Dealer(); // Create a new Dealer object.
+        console.log(dealer);
+        dealer.shuffle(); // Call shuffle function.
+
+        /* doc page 6: Using a for/of loop, i
+       terate over the cards array (hint: dealer.cards) and
+       use a switch expression on the suit (hint: card.suit)
+       to compare the suit against the string values: Hearts, Diamonds, Clubs, Spades.
+       */
+        let cardOutputWithIcon = "";
+        // Output the random cards with face and suit when the shuffle function is called.
+        for (card of dealer.cards) {
+          switch (card.suit) {
+            case "Hearts":
+              cardOutputWithIcon += buildPlayingCard(
+                card,
+                "mdi mdi-cards-heart",
+                "red",
+                "red"
+              );
+              break;
+
+            case "Diamonds":
+              cardOutputWithIcon += buildPlayingCard(
+                card,
+                "mdi mdi-cards-diamond",
+                "red",
+                "red"
+              );
+              break;
+
+            case "Clubs":
+              cardOutputWithIcon += buildPlayingCard(
+                card,
+                "mdi mdi-cards-club",
+                "black",
+                "black"
+              );
+              break;
+
+            case "Spades":
+              cardOutputWithIcon += buildPlayingCard(
+                card,
+                "mdi mdi-cards-spade",
+                "black",
+                "black"
+              );
+              break;
+            default:
+          }
+        }
+
+        //Shuffled cards will display in div with id player-card-container when the button is triggered by the clickForCards function.
+        document.getElementById("player-card-container").innerHTML =
+          cardOutputWithIcon;
+      }
+    </script>
+  </body>
+</html>
